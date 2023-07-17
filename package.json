@@ -1,5 +1,5 @@
 {
-  "name": "github-issue-bot",
+  "name": "tts-bot",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.2.2",
+    "axios": "^1.4.0",
     "node-telegram-bot-api": "^0.61.0"
   }
 }
