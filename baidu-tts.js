@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {writeFileSync, exitsSync, unlinkSync} = require("fs");
+const {writeFileSync, existsSync, unlinkSync} = require("fs");
 const path = require("path");
 const client = axios.create({});
 const AK = process.env.AK;
@@ -24,7 +24,7 @@ async function main(msg) {
     responseType: 'arraybuffer'
   });
   const filename = path.join(__dirname, '_temp', 'audio.mp3');
-  if (exitsSync(filename)) {
+  if (existsSync(filename)) {
     unlinkSync(filename);
   }
   writeFileSync(filename, new Buffer.from(res.data));
