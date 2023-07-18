@@ -1,7 +1,14 @@
 const TelegramBot = require('node-telegram-bot-api');
 const baiduTTS = require('./baidu-tts');
-const token = process.env.TELEGRAM_TOKEN;
+const {join} = require("path");
 
+// 根据 NODE_ENV 加载相应的 .env 文件
+const nodeEnv = process.env.NODE_ENV || 'development';
+
+require('dotenv').config({
+  path: join(__dirname, `.env.${nodeEnv}`),
+});
+const token = process.env.TELEGRAM_TOKEN;
 class BotManager {
 
   constructor(bot) {
