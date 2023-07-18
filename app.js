@@ -20,7 +20,9 @@ class BotManager {
     const chatId = msg.chat.id;
     baiduTTS(msg.text).then(res => {
       bot.sendAudio(chatId, res);
-    })
+    }).catch(err => {
+      bot.sendMessage(chatId, `sorry, something wrong,${err.message}`);
+    });
   }
 
   init() {

@@ -38,8 +38,8 @@ async function main(msg) {
 function getAccessToken() {
   return new Promise((resolve, reject) => {
     client.post(`https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=${AK}&client_secret=${SK}`).then(res => {
-      resolve(res.data.access_token)
-    }).then(err => {
+      resolve(res.data.access_token);
+    }).catch(err => {
       reject(err);
     })
   })
