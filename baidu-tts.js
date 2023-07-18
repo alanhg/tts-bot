@@ -23,6 +23,9 @@ async function main(msg) {
     },
     responseType: 'arraybuffer'
   });
+  if (res.headers['content-type'] !== 'audio/mp3') {
+    throw new Error('baidu tts error');
+  }
   const filename = path.join(__dirname, '_temp', 'audio.mp3');
   if (existsSync(filename)) {
     unlinkSync(filename);

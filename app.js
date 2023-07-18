@@ -21,7 +21,7 @@ class BotManager {
     baiduTTS(msg.text).then(res => {
       bot.sendAudio(chatId, res);
     }).catch(err => {
-      bot.sendMessage(chatId, `sorry, something wrong,${err.message}`);
+      bot.sendMessage(chatId, `sorry, something wrong\n${err.message}`);
     });
   }
 
