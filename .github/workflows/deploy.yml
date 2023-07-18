@@ -44,7 +44,7 @@ jobs:
           script: |
             cd /home/opc/tts-bot
             npm i
-            pm2 restart tts-bot
+            pm2 startOrReload ecosystem.config.js
       - name: Notify
         uses: appleboy/telegram-action@master
         with:
