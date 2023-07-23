@@ -7,6 +7,7 @@ require('dotenv').config({
 const TelegramBot = require('node-telegram-bot-api');
 const baiduTTS = require('./baidu-tts');
 const token = process.env.TELEGRAM_TOKEN;
+
 class BotManager {
 
   constructor(bot) {
@@ -20,13 +21,21 @@ class BotManager {
     bot.sendMessage(chatId, 'hello,just send my any text');
   }
 
-  doSpeak(msg) {
+  async doSpeak(msg) {
     const bot = this.bot;
     const chatId = msg.chat.id;
+    const sended = await bot.sendMessage(chatId, '正在生成语音文件⏳...');
     baiduTTS(msg.text).then(res => {
+      bot.editMessageText('音频生成完毕', {
+        chat_id: chatId,
+        message_id: sended.message_id
+      });
       bot.sendAudio(chatId, res);
     }).catch(err => {
-      bot.sendMessage(chatId, `sorry, something wrong\n${err.message}`);
+      bot.editMessageText(`音频生成出错\n${err.message}`, {
+        chat_id: chatId,
+        message_id: sended.message_id
+      });
     });
   }
 
