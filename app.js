@@ -5,7 +5,7 @@ require('dotenv').config({
   path: join(__dirname, `.env.${nodeEnv}`),
 });
 const TelegramBot = require('node-telegram-bot-api');
-const baiduTTS = require('./baidu-tts');
+const openaiTTS = require('./openai-tts');
 const token = process.env.TELEGRAM_TOKEN;
 
 class BotManager {
@@ -25,7 +25,7 @@ class BotManager {
     const bot = this.bot;
     const chatId = msg.chat.id;
     const sended = await bot.sendMessage(chatId, '正在生成语音文件⏳...');
-    baiduTTS(msg.text).then(res => {
+    openaiTTS(msg.text).then(res => {
       bot.editMessageText('音频生成完毕', {
         chat_id: chatId,
         message_id: sended.message_id
