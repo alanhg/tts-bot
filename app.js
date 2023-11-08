@@ -39,7 +39,7 @@ class BotManager {
      * 除了回复的消息及指令信息外，视为关键词进行GitHub issue检索
      */
     bot.on('message', async (msg) => {
-      if (msg.text.match(/\/(help|start)$/)) {
+      if (msg.text?.match(/\/(help|start)$/)) {
         return this.doHelp(msg);
       }
       return this.doSpeak(msg);
