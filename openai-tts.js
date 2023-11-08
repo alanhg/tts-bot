@@ -1,5 +1,9 @@
-const {writeFileSync, existsSync, unlinkSync, promises} = require("fs");
+const {existsSync, unlinkSync, promises} = require("fs");
 const path = require("path");
+/**
+ *
+ * @type {OpenAI | {AuthenticationError: AuthenticationError, ClientOptions: ClientOptions, PermissionDeniedError: PermissionDeniedError, RateLimitError: RateLimitError, ConflictError: ConflictError, OpenAIError: OpenAIError, APIConnectionError: APIConnectionError, NotFoundError: NotFoundError, BadRequestError: BadRequestError, InternalServerError: InternalServerError, APIConnectionTimeoutError: APIConnectionTimeoutError, fileFromPath: any, APIUserAbortError: APIUserAbortError, toFile: (value: (ToFileInput | PromiseLike<ToFileInput>), name?: (string | null | undefined), options?: (FilePropertyBag | undefined)) => Promise<FileLike>, UnprocessableEntityError: UnprocessableEntityError, OpenAI: OpenAI, APIError: APIError, readonly default: OpenAI} | {AuthenticationError: AuthenticationError, ClientOptions: ClientOptions, PermissionDeniedError: PermissionDeniedError, RateLimitError: RateLimitError, ConflictError: ConflictError, OpenAIError: OpenAIError, APIConnectionError: APIConnectionError, NotFoundError: NotFoundError, BadRequestError: BadRequestError, InternalServerError: InternalServerError, APIConnectionTimeoutError: APIConnectionTimeoutError, fileFromPath: any, APIUserAbortError: APIUserAbortError, toFile: (value: (ToFileInput | PromiseLike<ToFileInput>), name?: (string | null | undefined), options?: (FilePropertyBag | undefined)) => Promise<FileLike>, UnprocessableEntityError: UnprocessableEntityError, OpenAI: OpenAI, APIError: APIError, readonly default: OpenAI}}
+ */
 const OpenAI = require("openai");
 const openai = new OpenAI({
   apiKey:process.env.OPENAI_API_KEY,
